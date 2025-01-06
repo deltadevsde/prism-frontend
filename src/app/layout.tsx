@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { EB_Garamond, Montserrat } from 'next/font/google';
+import localFont from 'next/font/local';
 import * as React from 'react';
 
 import '@/styles/globals.css';
@@ -39,23 +41,48 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     images: [`${siteConfig.url}/images/og.jpg`],
-    // creator: '@th_clarence',
   },
-  // authors: [
-  //   {
-  //     name: 'Theodorus Clarence',
-  //     url: 'https://theodorusclarence.com',
-  //   },
-  // ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const garamond = EB_Garamond({
+  subsets: ['latin'],
+  variable: '--font-garamond',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+});
+
+const advercase = localFont({
+  src: '../../public/fonts/AdvercaseFont-Regular.woff2',
+  display: 'swap',
+  variable: '--font-advercase',
+  declarations: [
+    {
+      prop: 'line-height',
+      value: '1.1',
+    },
+  ],
+});
+
+const advercaseBold = localFont({
+  src: '../../public/fonts/AdvercaseFont-Bold.woff2',
+  display: 'swap',
+  variable: '--font-advercase-bold',
+  declarations: [
+    {
+      prop: 'line-height',
+      value: '1.1',
+    },
+  ],
+});
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html
+      className={`${garamond.variable} ${advercase.variable} ${advercaseBold.variable} ${montserrat.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

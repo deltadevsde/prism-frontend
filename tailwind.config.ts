@@ -7,6 +7,10 @@ export default {
     extend: {
       fontFamily: {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],
+        garamond: ['var(--font-garamond)', ...defaultTheme.fontFamily.serif],
+        advercase: ['var(--font-advercase)', ...defaultTheme.fontFamily.sans],
+        'advercase-bold': ['var(--font-advercase-bold)', ...defaultTheme.fontFamily.sans],
+        montserrat: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {

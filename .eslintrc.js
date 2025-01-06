@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ['!.prettierrc.js'],
   env: {
     browser: true,
     es2021: true,
@@ -19,10 +20,7 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
 
     'react/display-name': 'off',
-    'react/jsx-curly-brace-presence': [
-      'warn',
-      { props: 'never', children: 'never' },
-    ],
+    'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
 
     //#region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
