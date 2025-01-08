@@ -101,7 +101,7 @@ const Footer = () => {
           </div>
 
           <div className='mt-12 text-center font-montserrat text-sm text-white'>
-            © 2024 | Prism Inc. All Rights Reserved.
+            © 2025 | Prism Inc. All Rights Reserved.
           </div>
         </div>
       </div>
