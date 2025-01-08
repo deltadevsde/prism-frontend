@@ -28,7 +28,7 @@ const Header = () => {
           'linear-gradient(170deg, rgba(89,22,176,0.5) 0%, rgba(133,34,142,0.5) 18%, rgba(50,17,42,0.5) 50%, rgba(24,12,11,0.5) 61%)',
       }}
     >
-      <div className='mx-auto flex h-16 max-w-7xl items-center justify-between px-4'>
+      <div className='mx-auto flex h-16 items-center justify-between px-4 xl:px-12'>
         <Link href='/' className='flex items-center gap-2'>
           <PrismLogo className='h-8 w-8' />
           <span className='font-garamond text-2xl text-white'>prism</span>
