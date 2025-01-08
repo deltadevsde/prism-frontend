@@ -83,7 +83,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       className={`${garamond.variable} ${advercase.variable} ${advercaseBold.variable} ${montserrat.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <div className='grain-overlay' />
+        {children}
+      </body>
     </html>
   );
 }

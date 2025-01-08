@@ -43,7 +43,7 @@ const AnimatedHeader = () => {
   };
 
   return (
-    <div className='relative h-screen w-full overflow-hidden bg-black'>
+    <div className='relative h-screen w-full overflow-hidden'>
       <div className='absolute inset-0 bg-black'>
         <div className="absolute inset-0 bg-[url('/images/background.png')] bg-cover bg-[25%_center] md:bg-center" />
       </div>
@@ -101,9 +101,9 @@ const AnimatedHeader = () => {
               </div>
             </div>
 
-            <div className='mx-auto max-w-2xl text-center'>
+            <div className='mx-auto max-w-[80%] text-center md:max-w-2xl'>
               <p
-                className={`mt-12 px-4 font-advercase-bold text-[1.1rem] text-[#FFEFEB] transition-opacity duration-500 md:mt-6 md:text-xl lg:text-2xl ${animationState === 'verifyIn' ? 'opacity-100' : 'opacity-0'} `}
+                className={`text-md mt-12 px-4 font-advercase-bold leading-tight text-[#FFEFEB] transition-opacity duration-500 md:mt-6 md:text-xl md:leading-normal lg:text-2xl ${animationState === 'verifyIn' ? 'opacity-100' : 'opacity-0'} `}
               >
                 Prism is a new verifiable authentication standard allowing users to directly verify
                 the authenticity of cryptographic materials without a trusted intermediary.
