@@ -51,13 +51,7 @@ const Header = () => {
             How Does It Work?
           </Link>
 
-          <RunLightNodeButton
-            className='button-hover hover-white relative h-10 shrink-0'
-            style={{
-              background:
-                'radial-gradient(50% 75% at -20% 50%, #5916B0 0%, rgba(133,34,142,1) 50%, rgba(24,12,11,1) 100%)',
-            }}
-          />
+          <RunLightNodeButton className='button-hover hover-white relative h-10 shrink-0' />
         </nav>
       </div>
     </header>

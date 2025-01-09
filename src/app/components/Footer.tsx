@@ -23,8 +23,9 @@ const Footer = () => {
             </h2>
 
             <RunLightNodeButton
-              transparent={true}
-              className='max-w-[320px] border-2 md:h-16 lg:max-w-[440px]'
+              transparent
+              keepTextWhite
+              className='max-w-[320px] border-2 hover:bg-[#723ECF] md:h-16 lg:max-w-[440px]'
             />
           </div>
         </div>

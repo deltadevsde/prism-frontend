@@ -6,12 +6,14 @@ type RunLightNodeButtonProps = {
   transparent?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  keepTextWhite?: boolean;
 };
 
 export default function RunLightNodeButton({
   transparent = false,
   className,
   style,
+  keepTextWhite = false,
 }: RunLightNodeButtonProps) {
   return (
     <button
@@ -24,8 +26,19 @@ export default function RunLightNodeButton({
         className
       )}
     >
-      <PrismLogo className='mr-2 h-4 w-4 md:h-5 md:w-5 [&>path]:fill-white group-hover:[&>path]:fill-[#0048EF]' />
-      <span className='group-hover:bg-gradient-to-r group-hover:from-[#0048EF] group-hover:to-[#790F83] group-hover:bg-clip-text group-hover:text-transparent'>
+      <PrismLogo
+        className={twMerge(
+          'mr-2 h-4 w-4 md:h-5 md:w-5 [&>path]:fill-white',
+          !keepTextWhite && 'group-hover:[&>path]:fill-[#0048EF]'
+        )}
+      />
+      <span
+        className={
+          keepTextWhite
+            ? 'text-white'
+            : 'group-hover:bg-gradient-to-r group-hover:from-[#0048EF] group-hover:to-[#790F83] group-hover:bg-clip-text group-hover:text-transparent'
+        }
+      >
         Run Light Node
       </span>
     </button>

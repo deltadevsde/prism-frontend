@@ -44,8 +44,8 @@ const AnimatedHeader = () => {
 
   return (
     <div className='relative h-screen w-full overflow-hidden'>
-      <div className='absolute inset-0 bg-black'>
-        <div className="absolute inset-0 bg-[url('/images/background.png')] bg-cover bg-[25%_center] md:bg-center" />
+      <div className='absolute inset-0 bg-[#131111]'>
+        <div className="absolute inset-0 bg-[url('/images/gradient1.png')] bg-cover bg-[25%_center] md:bg-center" />
       </div>
 
       <div className='relative z-10 flex h-full flex-col items-center justify-center'>
