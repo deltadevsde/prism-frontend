@@ -4,17 +4,9 @@ import { IconType } from 'react-icons';
 
 import { cn } from '@/lib/utils';
 
-import UnstyledLink, {
-  UnstyledLinkProps,
-} from '@/components/links/UnstyledLink';
+import UnstyledLink, { UnstyledLinkProps } from '@/components/links/UnstyledLink';
 
-const IconLinkVariant = [
-  'primary',
-  'outline',
-  'ghost',
-  'light',
-  'dark',
-] as const;
+const IconLinkVariant = ['primary', 'outline', 'ghost', 'light', 'dark'] as const;
 
 type IconLinkProps = {
   isDarkBg?: boolean;
@@ -26,24 +18,14 @@ type IconLinkProps = {
 } & Omit<UnstyledLinkProps, 'children'>;
 
 const IconLink = React.forwardRef<HTMLAnchorElement, IconLinkProps>(
-  (
-    {
-      className,
-      icon: Icon,
-      variant = 'outline',
-      isDarkBg = false,
-      classNames,
-      ...rest
-    },
-    ref
-  ) => {
+  ({ className, icon: Icon, variant = 'outline', isDarkBg = false, classNames, ...rest }, ref) => {
     return (
       <UnstyledLink
         ref={ref}
         type='button'
         className={cn(
           'inline-flex items-center justify-center rounded font-medium',
-          'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
+          'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
           'shadow-sm',
           'transition-colors duration-75',
           'min-h-[28px] min-w-[28px] p-1 md:min-h-[34px] md:min-w-[34px] md:p-2',
@@ -51,29 +33,27 @@ const IconLink = React.forwardRef<HTMLAnchorElement, IconLinkProps>(
           [
             variant === 'primary' && [
               'bg-primary-500 text-white',
-              'border-primary-600 border',
+              'border border-primary-600',
               'hover:bg-primary-600 hover:text-white',
               'active:bg-primary-700',
               'disabled:bg-primary-700',
             ],
             variant === 'outline' && [
               'text-primary-500',
-              'border-primary-500 border',
+              'border border-primary-500',
               'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
+              isDarkBg && 'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],
             variant === 'ghost' && [
               'text-primary-500',
               'shadow-none',
               'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
+              isDarkBg && 'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],
             variant === 'light' && [
               'bg-white text-gray-700',
               'border border-gray-300',
-              'hover:text-dark hover:bg-gray-100',
+              'hover:bg-gray-100 hover:text-dark',
               'active:bg-white/80 disabled:bg-gray-200',
             ],
             variant === 'dark' && [

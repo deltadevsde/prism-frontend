@@ -9,16 +9,7 @@ type TextButtonProps = {
 } & React.ComponentPropsWithRef<'button'>;
 
 const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
-  (
-    {
-      children,
-      className,
-      variant = 'primary',
-      disabled: buttonDisabled,
-      ...rest
-    },
-    ref
-  ) => {
+  ({ children, className, variant = 'primary', disabled: buttonDisabled, ...rest }, ref) => {
     return (
       <button
         ref={ref}
@@ -26,7 +17,7 @@ const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
         disabled={buttonDisabled}
         className={cn(
           'button inline-flex items-center justify-center font-semibold',
-          'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
+          'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
           'transition duration-100',
           //#region  //*=========== Variant ===========
           variant === 'primary' && [

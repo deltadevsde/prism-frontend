@@ -2,9 +2,7 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-import UnstyledLink, {
-  UnstyledLinkProps,
-} from '@/components/links/UnstyledLink';
+import UnstyledLink, { UnstyledLinkProps } from '@/components/links/UnstyledLink';
 
 const PrimaryLinkVariant = ['primary', 'basic'] as const;
 type PrimaryLinkProps = {
@@ -19,7 +17,7 @@ const PrimaryLink = React.forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
         {...rest}
         className={cn(
           'inline-flex items-center',
-          'focus-visible:ring-primary-500 focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-offset-2',
+          'focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-offset-2',
           'font-medium',
           //#region  //*=========== Variant ===========
           variant === 'primary' && [
