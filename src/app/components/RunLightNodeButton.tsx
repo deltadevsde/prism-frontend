@@ -3,6 +3,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type RunLightNodeButtonProps = {
+  onClick?: () => void;
   transparent?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -10,6 +11,7 @@ type RunLightNodeButtonProps = {
 };
 
 export default function RunLightNodeButton({
+  onClick,
   transparent = false,
   className,
   style,
@@ -25,6 +27,7 @@ export default function RunLightNodeButton({
           : 'bg-gradient-to-r from-[#0048EF] to-[#790F83] hover:bg-white hover:from-white hover:to-white',
         className
       )}
+      onClick={onClick}
     >
       <PrismLogo
         className={twMerge(

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { EB_Garamond, Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import * as React from 'react';
@@ -30,12 +30,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/images/og.jpg`],
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#131111',
 };
 
 const garamond = EB_Garamond({
@@ -72,10 +70,16 @@ const advercaseBold = localFont({
   ],
 });
 
+const BerkeleyMono = localFont({
+  src: '../../public/fonts/BerkeleyMono-Regular.woff2',
+  display: 'swap',
+  variable: '--font-berkeley-mono',
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      className={`${garamond.variable} ${advercase.variable} ${advercaseBold.variable} ${montserrat.variable}`}
+      className={`${garamond.variable} ${advercase.variable} ${advercaseBold.variable} ${montserrat.variable} ${BerkeleyMono.variable}`}
     >
       <body>
         <div className='grain-overlay' />

@@ -4,7 +4,7 @@ import InfoCard from '@/app/components/InfoCard';
 
 const WhyPrismSection = () => {
   return (
-    <section className='relative mt-14 py-16 md:px-4 md:py-24'>
+    <section id='why-prism' className='relative mt-14 py-16 md:px-4 md:py-24'>
       <div
         className='absolute inset-0'
         style={{

@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react';
 import PrismGuideButton from '@/app/components/PrismGuideButton';
 import RunLightNodeButton from '@/app/components/RunLightNodeButton';
 
-const AnimatedHeader = () => {
+interface AnimatedHeaderProps {
+  openModal: () => void;
+}
+
+const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
   const [animationState, setAnimationState] = useState('initial');
   const [lineState, setLineState] = useState('initial');
 
@@ -114,7 +118,7 @@ const AnimatedHeader = () => {
                   animationState === 'verifyIn' ? 'opacity-100' : 'opacity-0'
                 }`}
               >
-                <RunLightNodeButton />
+                <RunLightNodeButton onClick={openModal} />
                 <PrismGuideButton />
               </div>
             </div>

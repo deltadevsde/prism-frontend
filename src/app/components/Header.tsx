@@ -5,7 +5,11 @@ import React, { useEffect, useState } from 'react';
 
 import RunLightNodeButton from '@/app/components/RunLightNodeButton';
 
-const Header = () => {
+interface HeaderProps {
+  openModal: () => void;
+}
+
+const Header = ({ openModal }: HeaderProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -36,7 +40,7 @@ const Header = () => {
 
         <nav className='none hidden items-center gap-12 md:flex'>
           <Link
-            href='/why-prism'
+            href='#why-prism'
             className='group flex shrink-0 items-center gap-1 whitespace-nowrap font-montserrat text-sm text-[#9C9C9C] hover:text-white'
           >
             <Arrow className='mr-1 h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
@@ -44,14 +48,17 @@ const Header = () => {
           </Link>
 
           <Link
-            href='/how-it-works'
+            href='#how-it-works'
             className='group flex shrink-0 items-center gap-1 whitespace-nowrap font-montserrat text-sm text-[#9C9C9C] hover:text-white'
           >
             <Arrow className='mr-1 h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
             How Does It Work?
           </Link>
 
-          <RunLightNodeButton className='button-hover hover-white relative h-10 shrink-0' />
+          <RunLightNodeButton
+            onClick={openModal}
+            className='button-hover hover-white relative h-10 shrink-0'
+          />
         </nav>
       </div>
     </header>

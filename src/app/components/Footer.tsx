@@ -9,7 +9,11 @@ import React from 'react';
 
 import RunLightNodeButton from '@/app/components/RunLightNodeButton';
 
-const Footer = () => {
+interface FooterProps {
+  openModal: () => void;
+}
+
+const Footer = ({ openModal }: FooterProps) => {
   return (
     <footer className='relative'>
       <div className='relative mx-auto -mb-10 max-w-[85%]'>
@@ -25,6 +29,7 @@ const Footer = () => {
             <RunLightNodeButton
               transparent
               keepTextWhite
+              onClick={openModal}
               className='max-w-[320px] border-2 hover:bg-[#723ECF] md:h-16 lg:max-w-[440px]'
             />
           </div>
@@ -35,21 +40,21 @@ const Footer = () => {
           <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
             <div className='flex flex-col items-center gap-8 md:flex-row'>
               <a
-                href='#'
+                href='https://prism.deltadevs.xyz/'
                 className='group flex items-center gap-2 font-montserrat text-sm font-semibold text-[#9C9C9C] transition-colors hover:text-white'
               >
                 <Arrow className='h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
                 Documentation
               </a>
               <a
-                href='#'
+                href='https://prism.deltadevs.xyz/'
                 className='group flex items-center gap-2 font-montserrat text-sm font-semibold text-[#9C9C9C] transition-colors hover:text-white'
               >
                 <Arrow className='h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
                 Resources
               </a>
               <a
-                href='#'
+                href='https://prism.deltadevs.xyz/quickstart.html'
                 className='group flex items-center gap-2 font-montserrat text-sm font-semibold text-[#9C9C9C] transition-colors hover:text-white'
               >
                 <Arrow className='h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
@@ -60,7 +65,7 @@ const Footer = () => {
             <div className='flex gap-4'>
               <div className='rounded-full bg-[#723ECF]'>
                 <a
-                  href='#'
+                  href='http://twitch.tv/distractedm1nd'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
                   <Image src={Twitch} alt='Twitch' width={20} height={20} />
@@ -68,7 +73,7 @@ const Footer = () => {
               </div>
               <div className='rounded-full bg-[#723ECF]'>
                 <a
-                  href='#'
+                  href='https://www.youtube.com/@prismxyz'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
                   <Image src={YouTube} alt='YouTube' width={22} height={22} />
@@ -76,7 +81,7 @@ const Footer = () => {
               </div>
               <div className='rounded-full bg-[#723ECF]'>
                 <a
-                  href='#'
+                  href='https://www.x.com/prism_xyz'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
                   <Image src={X} alt='X' width={20} height={20} />
@@ -84,7 +89,7 @@ const Footer = () => {
               </div>
               <div className='rounded-full bg-[#723ECF]'>
                 <a
-                  href='#'
+                  href='https://discord.gg/kSbT5z8N'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
                   <Image src={Discord} alt='Discord' width={22} height={22} />
@@ -92,7 +97,7 @@ const Footer = () => {
               </div>
               <div className='rounded-full bg-[#723ECF]'>
                 <a
-                  href='#'
+                  href='https://www.github.com/deltadevsde/prism'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-black transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
                   <Image src={Github} alt='GitHub' width={40} height={40} />

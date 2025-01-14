@@ -1,12 +1,14 @@
 'use client';
 
 import * as React from 'react';
+import { useState } from 'react';
 import '@/lib/env';
 
 import AnimatedHeader from '@/app/components/AnimatedHeader';
 import ContentSection from '@/app/components/ContentSections';
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
+import LightNodeModal from '@/app/components/LightNodeModal';
 
 /**
  * SVGR Support
@@ -21,6 +23,10 @@ import Header from '@/app/components/Header';
 // to customize the default configuration.
 
 export default function HomePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+
   return (
     <main
       className='relative'
@@ -34,10 +40,11 @@ export default function HomePage() {
         filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
       }}
     >
-      <Header />
-      <AnimatedHeader />
+      <LightNodeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Header openModal={openModal} />
+      <AnimatedHeader openModal={openModal} />
       <ContentSection />
-      <Footer />
+      <Footer openModal={openModal} />
     </main>
   );
 }

@@ -4,8 +4,8 @@ import InfoCard from '@/app/components/InfoCard';
 
 const HowItWorksSection = () => {
   return (
-    <section className='relative py-2 md:px-4 md:py-2'>
-      <div className='mx-auto max-w-[97%] md:max-w-[90%]'>
+    <section id='how-it-works' className='relative py-2 md:px-4 md:py-2'>
+      <div className='mx-auto mt-20 max-w-[97%] md:max-w-[90%]'>
         <h2 className='text-center font-advercase text-6xl text-[#FFEFEB] sm:text-6xl md:text-left md:text-7xl lg:text-8xl'>
           How Does <br className='md:hidden' /> It Work?
         </h2>
