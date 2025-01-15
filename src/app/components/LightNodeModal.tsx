@@ -67,7 +67,10 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
 
   return (
     <>
-      <div className='fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm' onClick={onClose} />
+      <div
+        className='fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm'
+        onClick={() => window.location.reload()}
+      />
 
       <div
         className='fixed left-1/2 z-[101] w-[90%] md:max-w-[1000px]'
@@ -83,7 +86,7 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
               <LoadingDots />
             </h2>
             <button
-              onClick={onClose}
+              onClick={() => window.location.reload()}
               className='border border-white/90 text-white/90 transition-colors hover:border-white hover:text-white'
             >
               <X className='h-5 w-5 md:h-7 md:w-7' />
