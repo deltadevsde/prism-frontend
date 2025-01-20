@@ -12,6 +12,7 @@ const HowItWorksSection = () => {
 
         <div className='mx-auto mt-12 grid grid-cols-1 gap-y-3 md:mt-16 md:grid-cols-2 lg:gap-6 xl:grid-cols-3'>
           <InfoCard
+            imageSrc='/images/trust-minimized.png'
             title='Trust Minimized'
             description='User applications embed a light node that downloads and verifies this proof directly from the Celestia network, without any intermediaries or RPCs - your app is a node in the network.'
           />

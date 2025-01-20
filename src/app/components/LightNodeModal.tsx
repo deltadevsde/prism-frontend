@@ -2,6 +2,9 @@ import Spline from '@splinetool/react-spline';
 import { X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
+// TODO: We need to wait for spline to be loaded, otherwise we should show a loading spinner or something similar
+// TODO: START LOADING SPLINE WHILE THE ANIMATION IS RUNNING
+
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -33,6 +36,7 @@ const LoadingDots = () => {
 const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
   const [progress] = useState(72);
   const [modalPosition, setModalPosition] = useState(0);
+  const [isSplineLoaded, setIsSplineLoaded] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -40,6 +44,9 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
       const viewportCenter = scrollY + window.innerHeight / 2;
       setModalPosition(viewportCenter);
       document.body.style.overflow = 'hidden';
+
+      const wasLoaded = sessionStorage.getItem('splineLoaded');
+      setIsSplineLoaded(wasLoaded === 'true');
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -125,6 +132,14 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
             </div>
             <div className='relative order-1 h-48 md:order-2 md:h-96'>
               <div className='absolute inset-0 flex items-center justify-center'>
+                {!isSplineLoaded && (
+                  <div className='flex items-center justify-center'>
+                    <div className='text-white'>
+                      Loading 3D Model
+                      <LoadingDots />
+                    </div>
+                  </div>
+                )}
                 <div className='origin-center scale-[0.2] md:scale-[0.35]'>
                   <Spline
                     style={{ height: 1000, width: 1000 }}

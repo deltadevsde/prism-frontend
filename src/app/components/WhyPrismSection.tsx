@@ -24,10 +24,12 @@ const WhyPrismSection = () => {
 
         <div className='mt-12 grid gap-6 md:mt-16 md:grid-cols-2'>
           <InfoCard
+            imageSrc='/images/trust-problem.png'
             title='The Trust Problem'
             description="We browse countless websites and send encrypted messages daily, trusting we're connecting to legitimate sources. But without proper verification, malicious actors can secretly intercept your sensitive data."
           />
           <InfoCard
+            imageSrc='/images/split-world-vulnerability.png'
             title='Split-World Vulnerability'
             description='This security flaw affects billions of daily internet interactions - from basic web browsing to private messaging - making it one of the most fundamental security challenges of our digital infrastructure.'
           />

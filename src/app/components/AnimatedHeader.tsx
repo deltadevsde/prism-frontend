@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PrismGuideButton from '@/app/components/PrismGuideButton';
 import RunLightNodeButton from '@/app/components/RunLightNodeButton';
+import SplinePreloader from '@/app/components/SplinePreloader';
 
 interface AnimatedHeaderProps {
   openModal: () => void;
@@ -10,9 +11,20 @@ interface AnimatedHeaderProps {
 const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
   const [animationState, setAnimationState] = useState('initial');
   const [lineState, setLineState] = useState('initial');
+  const [isSplinePreloaded, setIsSplinePreloaded] = useState(false);
 
   useEffect(() => {
+    const wasLoaded = sessionStorage.getItem('splineLoaded');
+    setIsSplinePreloaded(wasLoaded === 'true');
+
+    const hasSeenAnimation = sessionStorage.getItem('hasSeenAnimation');
+
     const sequence = async () => {
+      if (hasSeenAnimation === 'true') {
+        setAnimationState('verifyIn');
+        return;
+      }
+
       await new Promise((r) => setTimeout(r, 300));
       setAnimationState('prismIn');
       await new Promise((r) => setTimeout(r, 1000));
@@ -28,6 +40,8 @@ const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
       setAnimationState('trustStrike');
       await new Promise((r) => setTimeout(r, 500));
       setAnimationState('verifyIn');
+
+      sessionStorage.setItem('hasSeenAnimation', 'true');
     };
 
     sequence();
@@ -48,6 +62,7 @@ const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
 
   return (
     <div className='relative h-screen w-full overflow-hidden'>
+      {!isSplinePreloaded && <SplinePreloader />}
       <div className='absolute inset-0 bg-[#131111]'>
         <div className="absolute inset-0 bg-[url('/images/gradient1.png')] bg-cover bg-[25%_center] md:bg-center" />
       </div>
