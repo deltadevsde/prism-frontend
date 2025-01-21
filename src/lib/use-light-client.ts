@@ -21,14 +21,19 @@ export const useLightClient = () => {
   const latestTargetHeight = useRef(0);
 
   const addLog = useCallback((message: string, type: LogEntry['type'] = 'info') => {
-    setLogs((prev) => [
-      ...prev,
-      {
-        timestamp: new Date().toLocaleTimeString(),
-        message,
-        type,
-      },
-    ]);
+    setLogs((prev) => {
+      if (prev.length > 0 && prev[prev.length - 1].message === message) {
+        return prev;
+      }
+      return [
+        ...prev,
+        {
+          timestamp: new Date().toLocaleTimeString(),
+          message,
+          type,
+        },
+      ];
+    });
   }, []);
 
   const updateProgress = useCallback(() => {
