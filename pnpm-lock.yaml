@@ -29,6 +29,9 @@ importers:
       next:
         specifier: ^15.1.4
         version: 15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      prism-wasm-lightclient:
+        specifier: file:../prism/crates/node_types/wasm-lightclient
+        version: file:../prism/crates/node_types/wasm-lightclient
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -3556,6 +3559,9 @@ packages:
   pretty-format@29.7.0:
     resolution: {integrity: sha512-Pdlw/oPxN+aXdmM9R00JVC9WVFoCLTKJvDVLgmJ+qAffBMxsV85l/Lu7sNx4zSzPyoL2euImuEwHhOXdEgNFZQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+
+  prism-wasm-lightclient@file:../prism/crates/node_types/wasm-lightclient:
+    resolution: {directory: ../prism/crates/node_types/wasm-lightclient, type: directory}
 
   prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -8425,6 +8431,8 @@ snapshots:
       '@jest/schemas': 29.6.3
       ansi-styles: 5.2.0
       react-is: 18.3.1
+
+  prism-wasm-lightclient@file:../prism/crates/node_types/wasm-lightclient: {}
 
   prompts@2.4.2:
     dependencies:

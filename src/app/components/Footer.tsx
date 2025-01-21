@@ -40,21 +40,21 @@ const Footer = ({ openModal }: FooterProps) => {
           <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
             <div className='flex flex-col items-center gap-8 md:flex-row'>
               <a
-                href='https://prism.deltadevs.xyz/'
+                href='https://docs.prism.rs/'
                 className='group flex items-center gap-2 font-montserrat text-sm font-semibold text-[#9C9C9C] transition-colors hover:text-white'
               >
                 <Arrow className='h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
                 Documentation
               </a>
               <a
-                href='https://prism.deltadevs.xyz/'
+                href='https://docs.prism.rs/'
                 className='group flex items-center gap-2 font-montserrat text-sm font-semibold text-[#9C9C9C] transition-colors hover:text-white'
               >
                 <Arrow className='h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
                 Resources
               </a>
               <a
-                href='https://prism.deltadevs.xyz/quickstart.html'
+                href='https://docs.prism.rs/quickstart.html'
                 className='group flex items-center gap-2 font-montserrat text-sm font-semibold text-[#9C9C9C] transition-colors hover:text-white'
               >
                 <Arrow className='h-2 w-2 [&>path]:fill-[#9C9C9C] group-hover:[&>path]:fill-white' />
