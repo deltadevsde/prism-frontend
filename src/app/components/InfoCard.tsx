@@ -13,7 +13,14 @@ const InfoCard = ({ title, description, imageSrc }: InfoCardProps) => {
       <div className='mx-auto mb-8 flex h-60 w-60 items-center'>
         {imageSrc && (
           <div className='relative mx-auto h-60 w-60'>
-            <Image src={imageSrc} alt={`${title} icon`} fill className='object-contain' priority />
+            <Image
+              src={imageSrc}
+              alt={`${title} icon`}
+              className='object-contain'
+              sizes='10vw'
+              fill
+              loading='lazy'
+            />
           </div>
         )}
       </div>

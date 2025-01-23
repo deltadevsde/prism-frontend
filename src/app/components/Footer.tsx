@@ -68,7 +68,7 @@ const Footer = ({ openModal }: FooterProps) => {
                   href='http://twitch.tv/distractedm1nd'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
-                  <Image src={Twitch} alt='Twitch' width={20} height={20} />
+                  <Image src={Twitch} alt='Twitch' width={20} />
                 </a>
               </div>
               <div className='rounded-full bg-[#723ECF]'>
@@ -76,7 +76,7 @@ const Footer = ({ openModal }: FooterProps) => {
                   href='https://www.youtube.com/@prismxyz'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
-                  <Image src={YouTube} alt='YouTube' width={22} height={22} />
+                  <Image src={YouTube} alt='YouTube' width={22} />
                 </a>
               </div>
               <div className='rounded-full bg-[#723ECF]'>
@@ -84,7 +84,7 @@ const Footer = ({ openModal }: FooterProps) => {
                   href='https://www.x.com/prism_xyz'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
-                  <Image src={X} alt='X' width={20} height={20} />
+                  <Image src={X} alt='X' width={20} />
                 </a>
               </div>
               <div className='rounded-full bg-[#723ECF]'>
@@ -92,7 +92,7 @@ const Footer = ({ openModal }: FooterProps) => {
                   href='https://discord.gg/kSbT5z8N'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-white transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
-                  <Image src={Discord} alt='Discord' width={22} height={22} />
+                  <Image src={Discord} alt='Discord' width={22} />
                 </a>
               </div>
               <div className='rounded-full bg-[#723ECF]'>
@@ -100,7 +100,7 @@ const Footer = ({ openModal }: FooterProps) => {
                   href='https://www.github.com/deltadevsde/prism'
                   className='flex h-10 w-10 items-center justify-center rounded-full bg-black transition-all hover:-translate-x-1 hover:-translate-y-1'
                 >
-                  <Image src={Github} alt='GitHub' width={40} height={40} />
+                  <Image src={Github} alt='GitHub' width={40} priority />
                 </a>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import { WasmLightClient } from 'prism-wasm-lightclient';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 // todo: refactor this mess
@@ -16,6 +17,7 @@ export const useLightClient = () => {
   const [progress, setProgress] = useState(0);
   const [currentHeight, setCurrentHeight] = useState(START_HEIGHT);
   const [targetHeight, setTargetHeight] = useState(0);
+  const [_, setClient] = useState<WasmLightClient | null>(null);
 
   const latestCurrentHeight = useRef(START_HEIGHT);
   const latestTargetHeight = useRef(0);
@@ -125,18 +127,62 @@ export const useLightClient = () => {
 
       addLog('Starting light client...', 'info');
 
-      const wasm = await import('prism-wasm-lightclient');
-      await wasm.default();
+      // there are some issues with Safari, its much slower somehow...
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      addLog(`Detected browser: ${isSafari ? 'Safari' : 'Other'}`, 'info');
 
-      const channel = new MessageChannel();
-      const worker = await new wasm.LightClientWorker(channel.port1);
-      worker.run();
+      try {
+        const wasm = await import('prism-wasm-lightclient');
+        addLog('WASM module imported successfully', 'info');
+        await wasm.default();
+        addLog('WASM module initialized', 'info');
 
-      channel.port1.onmessage = processWorkerMessage;
-      channel.port2.onmessage = processWorkerMessage;
+        const channel = new MessageChannel();
+        addLog('MessageChannel created', 'info');
+
+        try {
+          const client = new wasm.WasmLightClient(channel.port2);
+          setClient(client);
+          addLog('Client created successfully', 'info');
+          const worker = new wasm.LightClientWorker(channel.port1);
+          addLog('Worker created successfully', 'info');
+
+          channel.port1.addEventListener('error', (error) => {
+            addLog(`Port1 error: ${error}`, 'error');
+          });
+          channel.port2.addEventListener('error', (error) => {
+            addLog(`Port2 error: ${error}`, 'error');
+          });
+
+          worker.run().catch((error) => {
+            addLog(`Worker run error: ${error}`, 'error');
+          });
+
+          channel.port1.onmessage = (event) => {
+            try {
+              processWorkerMessage(event);
+            } catch (error) {
+              addLog(`Message processing error: ${error}`, 'error');
+            }
+          };
+          channel.port2.onmessage = (event) => {
+            try {
+              processWorkerMessage(event);
+            } catch (error) {
+              addLog(`Message processing error: ${error}`, 'error');
+            }
+          };
+        } catch (error) {
+          addLog(`Worker creation failed: ${error}`, 'error');
+          throw error;
+        }
+      } catch (error) {
+        addLog(`WASM initialization failed: ${error}`, 'error');
+        throw error;
+      }
 
       addLog('Light client setup complete', 'success');
-    } catch (error: Error | unknown) {
+    } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
       addLog(`Error: ${errorMessage}`, 'error');
       setIsRunning(false);
