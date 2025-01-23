@@ -31,7 +31,7 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4",
-    "prism-wasm-lightclient": "github:deltadevsde/prism#prism-wasm/crates/node_types/wasm-lightclient"
+    "prism-wasm-lightclient": "github:deltadevsde/prism#prism-wasm:crates/node_types/wasm-lightclient"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
