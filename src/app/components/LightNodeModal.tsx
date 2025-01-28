@@ -1,6 +1,7 @@
-import Spline from '@splinetool/react-spline';
 import { X } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
+
+const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 import { LogEntry, useLightClient } from '@/lib/use-light-client';
 
@@ -60,6 +61,15 @@ const LogContainer = ({ logs }: { logs: LogEntry[] }) => {
     </div>
   );
 };
+
+const SplineContainer = React.memo(() => (
+  <React.Suspense fallback={<div>Loading...</div>}>
+    <Spline
+      style={{ height: 1000, width: 1000 }}
+      scene='https://prod.spline.design/V30jxm7Rt3T1ZpnJ/scene.splinecode'
+    />
+  </React.Suspense>
+));
 
 const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
   const [modalPosition, setModalPosition] = useState(0);
@@ -167,10 +177,7 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
             <div className='relative order-1 h-48 md:order-2 md:h-96'>
               <div className='absolute inset-0 flex items-center justify-center'>
                 <div className='origin-center scale-[0.2] md:scale-[0.35]'>
-                  <Spline
-                    style={{ height: 1000, width: 1000 }}
-                    scene='https://prod.spline.design/V30jxm7Rt3T1ZpnJ/scene.splinecode'
-                  />
+                  {isOpen && <SplineContainer />}
                 </div>
               </div>
             </div>

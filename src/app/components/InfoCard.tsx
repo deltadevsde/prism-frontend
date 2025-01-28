@@ -10,14 +10,14 @@ interface InfoCardProps {
 const InfoCard = ({ title, description, imageSrc }: InfoCardProps) => {
   return (
     <div className='flex flex-col border-2 border-[#FFF1EE] bg-[#131111] p-8'>
-      <div className='mx-auto mb-8 flex h-60 w-60 items-center'>
+      <div className='mx-auto mb-8 flex h-60 w-60 items-center lg:h-80 lg:w-80'>
         {imageSrc && (
-          <div className='relative mx-auto h-60 w-60'>
+          <div className='relative mx-auto h-60 w-60 lg:h-80 lg:w-80'>
             <Image
               src={imageSrc}
               alt={`${title} icon`}
               className='object-contain'
-              sizes='10vw'
+              sizes='20vw'
               fill
               loading='lazy'
             />

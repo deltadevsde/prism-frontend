@@ -18,7 +18,7 @@ const ContentSection = () => {
           </div>
           <div className='w-full md:w-[40%]'>
             <video
-              src='/images/Verifiable.mp4'
+              src='/images/Verif_new3.mp4'
               autoPlay
               loop
               muted
