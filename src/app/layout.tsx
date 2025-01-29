@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.title,
-    images: [`${siteConfig.url}/images/og.jpg`],
+    images: [`${siteConfig.url}/images/prism_logo.png`],
     type: 'website',
     locale: 'en_US',
   },
