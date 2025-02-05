@@ -71,7 +71,7 @@ const SplineContainer = React.memo(() => (
   </React.Suspense>
 ));
 
-const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
+const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [modalPosition, setModalPosition] = useState(0);
 
   const { isRunning, logs, progress, currentHeight, startLightClient, stopLightClient } =
@@ -110,8 +110,6 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
 
   return (
     <>
@@ -186,6 +184,12 @@ const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
       </div>
     </>
   );
+};
+
+const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
+  if (!isOpen) return null;
+
+  return <MainLightNodeModal isOpen onClose={onClose} />;
 };
 
 export default LightNodeModal;

@@ -10,22 +10,24 @@ import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import LightNodeModal from '@/app/components/LightNodeModal';
 
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
-
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
+const isFirefox = () => {
+  if (typeof window === 'undefined') return false;
+  return (
+    navigator.userAgent.toLowerCase().includes('firefox') ||
+    navigator.userAgent.toLowerCase().includes('mozilla')
+  );
+};
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    if (isFirefox()) {
+      alert('Firefox is not supported for running the Light Node.');
+      return;
+    }
+    setIsModalOpen(true);
+  };
 
   return (
     <main
