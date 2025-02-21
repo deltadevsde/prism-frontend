@@ -12,8 +12,8 @@ const ContentSection = () => {
         <div className='flex flex-col items-center lg:flex-row lg:items-start lg:gap-8'>
           <div className='flex-1'>
             <h1 className='mb-4 text-center font-advercase text-3xl text-white lg:mb-12 lg:text-left lg:text-6xl'>
-              <span className='block'>Making the internet</span>
-              <span className='block xl:leading-[1.6]'>verifiable, not just secure.</span>
+              <span className='block max-w-96'>Making the internet</span>
+              <span className='block'>verifiable, not just secure.</span>
             </h1>
             <div className='flex justify-center lg:justify-start'>
               <PrismGuideButton />

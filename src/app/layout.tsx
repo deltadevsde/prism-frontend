@@ -82,8 +82,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${garamond.variable} ${advercase.variable} ${advercaseBold.variable} ${montserrat.variable} ${BerkeleyMono.variable}`}
     >
       <body>
-        <div className='grain-overlay' />
+        <div className='' />
         {children}
+        <svg width='0' height='0'>
+          <filter id='noise'>
+            <feTurbulence
+              type='fractalNoise'
+              baseFrequency='0.6'
+              numOctaves='3'
+              stitchTiles='stitch'
+              result='noise'
+            />
+            <feColorMatrix type='saturate' values='0' in='noise' result='desaturatedNoise' />
+            <feComponentTransfer in='desaturatedNoise' result='finalNoise'>
+              <feFuncA type='table' tableValues='0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1' />
+            </feComponentTransfer>
+          </filter>
+        </svg>
       </body>
     </html>
   );

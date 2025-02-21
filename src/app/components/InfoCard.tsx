@@ -25,7 +25,7 @@ const InfoCard = ({ title, description, imageSrc }: InfoCardProps) => {
         )}
       </div>
       <h3 className='text-center font-advercase text-3xl text-[#FFF1EE] md:text-4xl'>{title}</h3>
-      <p className='md:text-md mt-4 font-montserrat text-xs text-[#D3C4C1] lg:text-lg'>
+      <p className='md:text-md mt-4 text-justify font-montserrat text-xs text-[#D3C4C1] lg:text-lg'>
         {description}
       </p>
     </div>

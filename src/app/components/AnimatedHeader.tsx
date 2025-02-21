@@ -63,8 +63,13 @@ const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
   return (
     <div className='relative h-screen w-full overflow-hidden'>
       {!isSplinePreloaded && <SplinePreloader />}
+      <div className='grain-overlay' />
       <div className='absolute inset-0 bg-[#131111]'>
         <div className="absolute inset-0 bg-[url('/images/gradient1.png')] bg-cover bg-[25%_center] md:bg-center" />
+      </div>
+      <div className='animate-gradient-shift absolute inset-0 mix-blend-overlay'>
+        <div className='absolute inset-0 bg-gradient-to-r from-purple-700 via-red-500 to-blue-600 opacity-70 blur-3xl' />
+        <div className='animate-gradient-shift-reverse absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-700 to-red-500 opacity-70 blur-3xl' />
       </div>
 
       <div className='relative z-10 flex h-full flex-col items-center justify-center'>
@@ -122,7 +127,7 @@ const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
 
             <div className='mx-auto max-w-[80%] text-center md:max-w-2xl'>
               <p
-                className={`text-md mt-12 px-4 font-advercase-bold leading-tight text-[#FFEFEB] transition-opacity duration-500 md:mt-6 md:text-xl md:leading-normal lg:text-2xl ${animationState === 'verifyIn' ? 'opacity-100' : 'opacity-0'} `}
+                className={`text-md mt-12 px-4 font-advercase leading-tight text-[#FFEFEB] transition-opacity duration-500 md:mt-6 md:text-xl md:leading-normal lg:text-2xl ${animationState === 'verifyIn' ? 'opacity-100' : 'opacity-0'} `}
               >
                 Prism is a new verifiable authentication standard allowing users to directly verify
                 the authenticity of cryptographic materials without a trusted intermediary.
