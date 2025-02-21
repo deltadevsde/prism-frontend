@@ -1,6 +1,5 @@
 import { X } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
-
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 import { LogEntry, useLightClient } from '@/lib/use-light-client';
@@ -27,6 +26,16 @@ const LoadingDots = () => {
   return <span className='ml-1 min-w-[24px] font-advercase'>{dots}</span>;
 };
 
+const LogItem = ({ log }: { log: LogEntry }) => {
+  // Format: [timestamp] TYPE - message
+  const typeLabel = log.type.toUpperCase();
+  return (
+    <div className='mb-1 text-white'>
+      [{log.timestamp}] {typeLabel} - {log.message}
+    </div>
+  );
+};
+
 const LogContainer = ({ logs }: { logs: LogEntry[] }) => {
   const logContainerRef = useRef<HTMLDivElement>(null);
 
@@ -44,18 +53,7 @@ const LogContainer = ({ logs }: { logs: LogEntry[] }) => {
         className='log-container md:text-md scrollbar-thin scrollbar-track-[#131111] scrollbar-thumb-[#723ECF] h-48 overflow-auto font-berkeley-mono text-sm text-[#FFEFEB] md:h-64'
       >
         {logs.map((log, index) => (
-          <div
-            key={index}
-            className={`mb-1 ${
-              log.type === 'error'
-                ? 'text-red-400'
-                : log.type === 'success'
-                  ? 'text-green-400'
-                  : 'text-[#FFEFEB]'
-            }`}
-          >
-            [{log.timestamp}] {log.message}
-          </div>
+          <LogItem key={index} log={log} />
         ))}
       </div>
     </div>
@@ -73,9 +71,17 @@ const SplineContainer = React.memo(() => (
 
 const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [modalPosition, setModalPosition] = useState(0);
+  const hasStartedRef = useRef(false);
 
-  const { isRunning, logs, progress, currentHeight, startLightClient, stopLightClient } =
-    useLightClient();
+  const {
+    isRunning,
+    logs,
+    progress,
+    currentHeight,
+    targetHeight,
+    startLightClient,
+    stopLightClient,
+  } = useLightClient();
 
   useEffect(() => {
     if (isOpen) {
@@ -84,8 +90,9 @@ const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
       setModalPosition(viewportCenter);
       document.body.style.overflow = 'hidden';
 
-      if (!isRunning) {
+      if (!isRunning && !hasStartedRef.current) {
         startLightClient();
+        hasStartedRef.current = true;
       }
     }
 
@@ -93,6 +100,7 @@ const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
       document.body.style.overflow = 'unset';
       if (isRunning && !isOpen) {
         stopLightClient();
+        hasStartedRef.current = false;
       }
     };
   }, [isOpen, isRunning, startLightClient, stopLightClient]);
@@ -154,6 +162,7 @@ const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                     {currentHeight > 0 && (
                       <div className='flex flex-row gap-1 font-advercase text-xs text-white'>
                         <div>Current Height: {currentHeight}</div>
+                        {targetHeight > 0 && <div>/ Target: {targetHeight}</div>}
                       </div>
                     )}
                   </div>
@@ -169,6 +178,7 @@ const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                   </div>
                 </div>
 
+                {/* Commitment button removed */}
                 <LogContainer logs={logs} />
               </div>
             </div>
@@ -188,7 +198,6 @@ const MainLightNodeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
 
 const LightNodeModal = ({ isOpen, onClose }: ModalProps) => {
   if (!isOpen) return null;
-
   return <MainLightNodeModal isOpen onClose={onClose} />;
 };
 

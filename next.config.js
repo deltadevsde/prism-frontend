@@ -20,6 +20,18 @@ const nextConfig = {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
 
+    // Add worker support
+    config.output.webassemblyModuleFilename = 'static/wasm/[modulehash].wasm';
+    config.module.rules.push({
+      test: /\.worker\.(js|ts)$/,
+      use: {
+        loader: 'worker-loader',
+        options: {
+          filename: 'static/[hash].worker.js',
+        },
+      },
+    });
+
     config.module.rules.push(
       // Reapply the existing rule, but only for svg imports ending in ?url
       {

@@ -100,11 +100,11 @@ const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
               <div
                 className={`relative font-advercase-bold text-8xl text-[#FFEFEB] transition-all duration-500 md:text-9xl lg:text-[12vw] ${
                   animationState === 'verifyIn'
-                    ? '-translate-y-100 text-opacity-50 md:translate-x-0 md:translate-y-0'
+                    ? '-translate-y-100 md:translate-x-0 md:translate-y-0'
                     : 'translate-y-[75%] md:translate-x-[55%] md:translate-y-0'
                 }`}
               >
-                <span>Trust</span>
+                <span className='opacity-50'>Trust</span>
                 <div
                   className={`absolute left-0 top-[49%] z-30 h-1 bg-[#FFEFEB] transition-all duration-500 md:h-2 ${
                     animationState === 'trustStrike' || animationState === 'verifyIn'

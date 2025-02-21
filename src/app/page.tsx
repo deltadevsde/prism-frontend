@@ -10,12 +10,9 @@ import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import LightNodeModal from '@/app/components/LightNodeModal';
 
-const isFirefox = () => {
+const isFirefox = (): boolean => {
   if (typeof window === 'undefined') return false;
-  return (
-    navigator.userAgent.toLowerCase().includes('firefox') ||
-    navigator.userAgent.toLowerCase().includes('mozilla')
-  );
+  return navigator.userAgent.toLowerCase().includes('firefox');
 };
 
 export default function HomePage() {
