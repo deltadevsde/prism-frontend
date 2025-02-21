@@ -21,10 +21,10 @@ export default function RunLightNodeButton({
     <button
       style={style}
       className={twMerge(
-        'group flex h-12 w-full max-w-[190px] items-center justify-center gap-0 rounded-md border border-[#FFEFEB] font-montserrat font-semibold text-white hover:from-white hover:to-white md:max-w-[210px] md:px-6',
+        'group flex h-12 w-full max-w-[190px] items-center justify-center gap-0 rounded-md border border-[#FFEFEB] font-montserrat font-semibold text-white drop-shadow-xl hover:from-white hover:to-white md:max-w-[210px] md:px-6',
         transparent
           ? 'bg-transparent'
-          : 'bg-gradient-to-r from-[#0048EF] to-[#790F83] hover:bg-white hover:from-white hover:to-white',
+          : 'bg-[#9747FF] hover:bg-white hover:from-white hover:to-white',
         className
       )}
       onClick={onClick}

@@ -139,7 +139,7 @@ const AnimatedHeader = ({ openModal }: AnimatedHeaderProps) => {
                 }`}
               >
                 <RunLightNodeButton onClick={openModal} />
-                <PrismGuideButton />
+                {/* <PrismGuideButton /> */}
               </div>
             </div>
           </div>
